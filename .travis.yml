@@ -24,6 +24,8 @@ before_deploy:
 - export FILES=dist/*
 - mv *.tar.gz dist
 - cd dist
+- sha512sum *.tar.gz > SHA512SUMS
+- sha256sum *.tar.gz > SHA256SUMS
 - sha1sum *.tar.gz > SHA1SUMS
 - md5sum *.tar.gz > MD5SUMS
 - cd -
@@ -31,11 +33,11 @@ before_deploy:
 deploy:
   provider: releases
   api_key:
-    secure: "DBvBUVU1nsv2nBGwugeNmAh8i9xviupwivUr50UBGor1ti1k6NryIOXYdCRP9huRzQeZNks3qsDw9h42KokFrtIO+lGmnJ66CTC+GGRRQsPpE4IyeaUXEHAECI5sIfxhIOiqs1TfLOp2hdyxnR2mghburbaqJ0BUW81buJz77QM="
+    secure: "uXUXUUAFTxfPsgoErM5biHHbNzdPq0DOmuOTUQZQ6op5oZeCRF0cgDsth3Ta492gL4j53swZcTsdMnKI1W/8ktCzMeKBi8IGbVXoK4SUJUlxf4l9vpOpkvTnuKECgbiz++XX6QdSaOHTrierf22xpY2MuDUL+tHpDgTdYABTa+ZQwCqiWG/KFZs+9dyGwvA9h9pwB0pxchJaHyVfBItW78EXVwnDBTY2aumFlYxN00WFWakJRYaAMSQ7TTFokXxXHEM259tzIzpB6KrFpGecgIA8GOo2tBkYhysuz8gsDjruQ3G7J8Iefu4vfJ2Q47Y/y2jt0vvOSFVOdeU1XWzQqrzMwRqUrsu/FFGgd0kwXMDVSm1XBBQF9TrrmCHT/zS9I6lq+dlZ0BiyoGFRibfrD3WUCGrLMeyi/WERXz7vPcTTZNZ4vUU4dHsfnJd9+XW4junNvSsR9Sc1UpnRDyz/sLnxhzosGnHeIPG6sRhgQTu3Iw03kE6hvVho1BR3E5YdZ3XeCai35ytrJqqVr1Nmw79QOvNNh1jzVlXxbCIlHUhFpfojqL/dTnoSzn63RGkl9g4+jX7uq6WB17nGPoSOwz29tcBHQGgbgzyooKkvy+IX11kd/LllTjfINHc/ke1GNcXDSqnsr5XD2zkNmtwYj04CooFGqcJbu5aSW5BDnsg="
   file: "${FILES}"
   skip_cleanup: true
   file_glob: true
   on:
-    repo: Bumblebee-Project/Bumblebee
-    branch: travis
+    repo: bluca/Bumblebee
+    branch: deploy
     tags: true
